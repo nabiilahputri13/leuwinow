@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>LeuwiNow</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+<body>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <h1>Leuwinow</h1>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="properties.html" class="active">Reservation</a></li>
+                      <li><a href="property-details.html">Reservation Details</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="schedule.html"><i class="fa fa-calendar"></i> Schedule a visit</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!-- ***** Header Area End ***** -->
+    <div class="container mt-5">
+        <h1>Select a Date</h1>
+        <div class="date-picker">
+            <label for="date">Select a date:</label>
+            <input type="date" id="date" name="date">
+        </div>
+        
+        <div class="row properties-box" id="properties-container"></div>
+        <div id="available-destinations">
+            <h2>Available Destinations</h2>
+            <ul id="destinations-list"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+        <div class="col-lg-12">
+            <p>marzel suki suki
+            
+            </div>
+        </div>
+    </footer>
+    <script>
+        const properties = [
+            {
+                image: 'assets/images/property-01.jpg',
+                category: 'Termasuk Penginapan',
+                price: 'Rp2.264.000',
+                title: 'Exclusive Trip Paket 5 Orang (Curug Cileember, Taman Wisata Matahari, 1 Malam di Royal Safari Garden & Resort)',
+                url: 'property-details.html'
+            },
+            {
+                image: 'assets/images/property-02.jpg',
+                category: 'Wisata Alam',
+                price: 'Rp1.180.000',
+                title: 'Tiket Rekreasi 2 Orang ke Taman Wisata Matahari',
+                url: 'property-details.html'
+            },
+            {
+                image: 'assets/images/property-03.jpg',
+                category: 'Termasuk Penginapan',
+                price: 'Rp1.460.000',
+                title: 'Full Trip Desa Leuwimalang (2 Malam di Puncak Raya Hotel, Free Produk Olahan UMKM)',
+                url: 'property-details.html'
+            },
+            {
+                image: 'assets/images/property-04.jpg',
+                category: 'Wisata Alam',
+                price: 'Rp584.500',
+                title: '2 Hari Wisata Kebun Teh Gunung Mas',
+                url: 'property-details.html'
+            },
+            {
+                image: 'assets/images/property-05.jpg',
+                category: 'Wisata Alam',
+                price: 'Rp925.600',
+                title: 'Paket 8 Orang ke Curug Cilember',
+                url: 'property-details.html'
+            },
+        ];
+
+        const container = document.getElementById('properties-container');
+
+        properties.forEach(property => {
+            const item = document.createElement('div');
+            item.className = 'col-lg-4 col-md-6 align-self-center mb-30 properties-items';
+
+            item.innerHTML = `
+                <div class="item">
+                    <a href="${property.url}"><img src="${property.image}" alt=""></a>
+                    <span class="category">${property.category}</span>
+                    <h6>${property.price}</h6>
+                    <h4><a href="${property.url}">${property.title}</a></h4>
+                    <div class="main-button">
+                        <a href="${property.url}">Schedule a visit</a>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(item);
+        });
+
+
+        document.getElementById('date').addEventListener('change', function() {
+        const selectedDate = this.value; // Get the selected date
+        const dateDisplays = document.querySelectorAll('.date-display');
+
+        dateDisplays.forEach(display => {
+            display.style.display = 'block'; // Show the date display
+            display.querySelector('.selected-date').textContent = selectedDate; // Set the selected date
+        });
+    });
+    </script>
+</body>
+</html>
